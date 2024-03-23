@@ -1,7 +1,7 @@
 from typing import List
 import math
 
-def sieve(n: int) -> List[int]:
+def sieve(n: int) -> List[bool]:
  
     primes = [True] * (n+2)
     for i in range(2, int(math.sqrt(n))+1):
