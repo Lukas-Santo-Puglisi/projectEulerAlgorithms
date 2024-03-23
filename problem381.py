@@ -15,7 +15,8 @@ def sieve(n : int) -> List[int]:
 
 #to understand this, study Wilsons theorem and compute by hand (p-1)*...*(p-4) mod p
 def computePrimeFactorial(prime: int)-> int:
-    return 3*pow(8, prime-2, prime) % prime
+   
+   return (-3*pow(8, prime-2, prime)) % prime
 
 def sumPrimeFactorial(nonInclusiveLimit: int = 10**6)->int:
     resultSum = 0

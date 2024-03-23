@@ -28,4 +28,5 @@ def findSumNumeratorNthConvergentOfE(n: int = 99) -> int:
         resultSum += int(character)
     return resultSum
 
+
 print(findSumNumeratorNthConvergentOfE(100))

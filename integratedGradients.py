@@ -26,6 +26,7 @@ def generate_scaled_inputs_and_gradients(model: torch.nn.Module, input: torch.Te
         model.zero_grad()
         loss.backward()
         input_gradients = scaled_input.grad
+
         assert scaled_input.grad is not None
         averaged_gradients += scaled_input.grad / steps
 
@@ -34,3 +35,21 @@ def generate_scaled_inputs_and_gradients(model: torch.nn.Module, input: torch.Te
     
     return scaled_averaged_integrated_gradients
 
+import numpy as np
+
+def map_integrated_gradients_to_original_features_np(reduced_ig_attributions: np.ndarray, pca_components: np.ndarray) -> np.ndarray:
+    """
+    Maps Integrated Gradients attributions computed in a reduced PCA feature space back to the original high-dimensional feature space using NumPy.
+
+    Args:
+    - reduced_ig_attributions (np.ndarray): The Integrated Gradients attributions computed in the reduced space,
+                                            with shape (n_samples, n_components).
+    - pca_components (np.ndarray): The principal components obtained from PCA, with shape (n_components, n_features).
+
+    Returns:
+    - np.ndarray: The Integrated Gradients attributions mapped back to the original feature space, with shape (n_samples, n_features).
+    """
+    # Perform the dot product between reduced IG attributions and PCA components
+    original_space_attributions = np.dot(reduced_ig_attributions, pca_components)
+
+    return original_space_attributions
