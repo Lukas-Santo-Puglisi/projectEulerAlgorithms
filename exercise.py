@@ -1,12 +1,17 @@
-# Task: Demonstrate the use of the @staticmethod decorator in a Python class. Create a class named TemperatureConverter that contains two static methods: celsius_to_fahrenheit and fahrenheit_to_celsius. Each method should take a temperature value as an argument and return the converted temperature. Also, demonstrate how these methods would be called without creating an instance of the class.
+# Task: Task: In Python, demonstrate the concept of encapsulation using a class called BankAccount. This class should:Have private instance variables for account_number and balance. Include a constructor that initializes the account number and balance. Provide public methods to deposit and withdraw funds, ensuring no withdrawals exceed the available balance. Include a method to display the balance.
 
-class TemperatureConverter:
-    @staticmethod
-    def celsius_to_fahrenheit(temperature):
-        return temperature * 9/5) + 32 
-    @staticmethod
-    def fahrenheit_to_celsius(temperature):
-        return (temperature - 32)* 5/9
+class BankAccount:
+    def __init__(self, accountNumber, balance):
+        self.accountNumber = accountNumber
+        self.balance = balance
     
-print(TemperatureConverter.celsius_to_fahrenheit(TemperatureConverter.fahrenheit_to_celsius(0)))
+    def deposit(self, amount):
+       
+
+        if self.balance + amount < 0:
+            return
+
+        self.balance += amount
     
+    def display_balance(self):
+        print(self.balance)

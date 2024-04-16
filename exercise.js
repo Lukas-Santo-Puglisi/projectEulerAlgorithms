@@ -1,13 +1,12 @@
-// Task: Write a React functional component named UserProfile using the ES6 arrow function syntax. The component should display a user's name and email in a styled <div> element. The component should accept name and email as props. Additionally, demonstrate how to use this component in a simple React application.
+// Task: Task: Implement a function in JavaScript using ES6+ syntax that converts a map of key-value pairs into an object. The function should be named mapToObject and take a Map as an argument. Demonstrate using this function by converting a map containing a few sample key-value pairs into an object and then print the resulting object.
 
-const UserProfile = ({userName, userEmail}) =>{
-  return <div style={{color:'red'}}> 
-    <p>
-    {userName}
-    </p>
-    <p>
-    {userEmail}
-    </p>
-  
-  </div>
+function mapToObject(myMap){
+  resultObject = {}
+  const iterator1 = myMap[Symbol.iterator()]
+  for (const item of iterator1){
+    resultObject[item[0]] = item[1]
+
+  }
+  return resultObject
 }
+
