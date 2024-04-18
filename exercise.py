@@ -1,17 +1,17 @@
-# Task: Task: In Python, demonstrate the concept of encapsulation using a class called BankAccount. This class should:Have private instance variables for account_number and balance. Include a constructor that initializes the account number and balance. Provide public methods to deposit and withdraw funds, ensuring no withdrawals exceed the available balance. Include a method to display the balance.
+from time import time
+#In Python, decorators are a powerful feature that allow you to modify the behavior of a function or class. Can you explain what a Python decorator is, and provide an example of a simple decorator that logs the execution time of a function?
 
-class BankAccount:
-    def __init__(self, accountNumber, balance):
-        self.accountNumber = accountNumber
-        self.balance = balance
+def my_decorator(func):
+    def wrapper(*args_for_func):
+        x = time()
+        result = func(*args_for_func)
+        y = time()
+        print(y - x)
+        return result
+    return wrapper
     
-    def deposit(self, amount):
-       
+@my_decorator
+def adder(x, y):
+    print(x+y)
 
-        if self.balance + amount < 0:
-            return
-
-        self.balance += amount
-    
-    def display_balance(self):
-        print(self.balance)
+adder(2, 3)
